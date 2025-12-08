@@ -11,7 +11,7 @@ function draw() {
         gameContent();
     }
 
-    fadeInOut("/03");
+    fadeInOut("../02/");
 }
 
 // -----------------------------------------
