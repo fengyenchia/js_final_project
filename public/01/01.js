@@ -30,7 +30,7 @@ function draw() {
 // -----------------------------------------
 // 將遊戲內容放在gameContent()裡
 function gameContent() {
-    typing("被監視的咖啡廳", 80, 450, 40, 5);
+    // typing("被監視的咖啡廳", 80, 450, 40, 5);
 
     if (mouseIsPressed && fadeStatus == "none") {
         fadeStatus = "out";
