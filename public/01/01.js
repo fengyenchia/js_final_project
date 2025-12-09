@@ -9,7 +9,7 @@ function preload() {
     img.paper = loadImage("../assets/images/1-3.png");
 
     // soundFormats('mp3');
-    // sound.a = loadSound("");;
+    // sound.a = loadSound("");
 
     video.coffee = createVideo("../assets/videos/動畫1-1.mp4");
     video.coffee.hide();
@@ -19,6 +19,7 @@ function preload() {
 
 let startVideo = false;
 let fiveSecond = false;
+let addCoffee = 0;
 
 function setup() {
     createCanvas(1440, 1024);
@@ -37,20 +38,26 @@ function draw() {
 // -----------------------------------------
 // 將遊戲內容放在gameContent()裡
 function gameContent() {
+    if (addCoffee < 1) {
+        imageMode(CENTER);
+        image(img.coffee, width / 2, height / 2, 1440, 1024);
 
-    imageMode(CENTER);
-    image(img.coffee, width / 2, height / 2, 1440, 1024);
+        fill(0, 120);
+        rect(0, 0, width, height);
 
-    fill(0, 120);
-    rect(0, 0, width, height);
-
-    imageMode(CENTER);
-    image(img.paper, width / 2, height / 2);
+        imageMode(CENTER);
+        image(img.paper, width / 2, height / 2);
+    }
 
     if (keyIsPressed && key == ' ') {
-        if (!startVideo && fadeStatus == "none") {
+        imageMode(CENTER);
+        image(img.coffee, width / 2, height / 2, 1440, 1024);
+
+        if (!startVideo && fadeStatus == "none" && addCoffee != 5) {
+            video.coffee.time(0);
             video.coffee.loop();
             startVideo = true;
+            fiveSecond = false;
         }
     }
 
@@ -64,15 +71,17 @@ function gameContent() {
             video.coffee.time(5);
             fiveSecond = true;
             startVideo = false;
+            addCoffee++;
         }
     }
+
     // if (fiveSecond) {
     //     fill(0, 120);
     //     rect(0, 0, width, height);
     // }
 
 
-    if (mouseIsPressed && fadeStatus == "none" && fiveSecond) {
+    if (mouseIsPressed && fadeStatus == "none" && fiveSecond && addCoffee == 5) {
         fadeStatus = "out";
     }
 }
