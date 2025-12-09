@@ -18,19 +18,22 @@ function setup() {
 }
 
 function draw() {
-    background(100);
+    background(255);
 
     if (fadeStatus == "none") {
         gameContent();
     }
 
-    fadeInOut("/02");
+    fadeInOut("/01");
 }
 
 // -----------------------------------------
 // 將遊戲內容放在gameContent()裡
 function gameContent() {
-    typing("被監視的咖啡廳", 80, 450, 40, 5);
+    fill(255);
+    stroke(0);
+    circle(width/2, height/2, 200);
+
 
     if (mouseIsPressed && fadeStatus == "none") {
         fadeStatus = "out";

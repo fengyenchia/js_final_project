@@ -1,5 +1,18 @@
 // fadeStatus 是從 fadeInOut.js 引入的全域變數
 
+let img = {};
+let sound = {};
+let video = {};
+
+function preload() {
+    img.a = loadImage("");
+    
+    soundFormats('mp3');
+    sound.a = loadSound("");;
+
+    video.a = createVideo("");
+}
+
 function setup() {
     createCanvas(1440, 1024);
 }
