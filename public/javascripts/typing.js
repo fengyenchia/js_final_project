@@ -5,7 +5,7 @@ let currentText = "";
 let i = 0;
 let speed = 25;
 
-function typing(typingText, mytextSize, baseLinePos, baseLineWidth, baseLineHeight) {
+function typing(typingText, textY, mytextSize, baseLinePosX, baseLinePosY, baseLineWidth, baseLineHeight) {
 	startAutoEnterText = true;
 
 	if (startAutoEnterText == true) {
@@ -19,9 +19,9 @@ function typing(typingText, mytextSize, baseLinePos, baseLineWidth, baseLineHeig
         stroke(255);
         textAlign(LEFT);
         let textX = (width-textWidth(typingText))/2;
-		text(currentText, textX, height/2);
+		text(currentText, textX, textY);
 		if (frameCount % 50 < 25) {
-			rect(baseLinePos + textWidth(currentText), height/2, baseLineWidth, baseLineHeight);
+			rect(baseLinePosX + textWidth(currentText), baseLinePosY, baseLineWidth, baseLineHeight);
 		}
 	}
 }

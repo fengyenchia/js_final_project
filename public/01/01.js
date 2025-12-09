@@ -4,17 +4,19 @@ let img = {};
 let sound = {};
 let video = {};
 
-// function preload() {
-//     img.a = loadImage("");
+function preload() {
+    // img.a = loadImage("");
     
-//     soundFormats('mp3');
-//     sound.a = loadSound("");;
+    // soundFormats('mp3');
+    // sound.a = loadSound("");;
 
-//     video.a = createVideo("");
-// }
+    video.coffee = createVideo("../assets/videos/動畫1-1.mp4");
+}
 
 function setup() {
     createCanvas(1440, 1024);
+    video.coffee.position(0, 0);
+    // video.coffee.position((width - video.coffee.width) / 2, (height - video.coffee.height) / 2);
 }
 
 function draw() {
@@ -30,7 +32,10 @@ function draw() {
 // -----------------------------------------
 // 將遊戲內容放在gameContent()裡
 function gameContent() {
-    // typing("被監視的咖啡廳", 80, 450, 40, 5);
+
+    if(mouseIsPressed){
+        video.coffee.play();
+    }
 
     if (mouseIsPressed && fadeStatus == "none") {
         fadeStatus = "out";
