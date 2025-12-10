@@ -34,8 +34,6 @@ function draw() {
     fadeInOut("/04");
 }
 
-
-
 let startVideo = false;
 let fiveSecond = false;
 
