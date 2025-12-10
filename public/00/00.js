@@ -32,11 +32,11 @@ function draw() {
 // 將遊戲內容放在gameContent()裡
 function gameContent() {
     imageMode(CENTER);
-    image(img.bg, width / 2, height / 2, 1024 * 1.5, 1024 * 1.5);
+    image(img.bg, width / 2, height / 2, 1024 * 1.41, 1024 * 1.41);
     image(img.smallBg, width / 2, height / 2.3);
 
     if (frameCount < 500) {
-        typing("被監視的咖啡廳", height / 2.3, 80, 450, height / 2.3, 40, 5);
+        typing("被監視的咖啡廳", (width-textWidth("被監視的咖啡廳"))/2, height / 2.3, 80, 450, height / 2.3, 40, 5, 2, 25);
     }
     else {
         textSize(50);

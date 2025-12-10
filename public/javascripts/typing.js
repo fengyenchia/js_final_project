@@ -3,9 +3,9 @@ let myInput;
 let startAutoEnterText = false;
 let currentText = "";
 let i = 0;
-let speed = 25;
+let speed = 0;
 
-function typing(typingText, textY, mytextSize, baseLinePosX, baseLinePosY, baseLineWidth, baseLineHeight) {
+function typing(typingText, textX, textY, mytextSize, baseLinePosX, baseLinePosY, baseLineWidth, baseLineHeight, myStrokeWeight, speed=25) {
 	startAutoEnterText = true;
 
 	if (startAutoEnterText == true) {
@@ -15,10 +15,10 @@ function typing(typingText, textY, mytextSize, baseLinePosX, baseLinePosY, baseL
 		}
 		textSize(mytextSize);
 		fill(255);
-        strokeWeight(2);
+        strokeWeight(myStrokeWeight);
         stroke(255);
         textAlign(LEFT);
-        let textX = (width-textWidth(typingText))/2;
+        // let textX = (width-textWidth(typingText))/2;
 		text(currentText, textX, textY);
 		if (frameCount % 50 < 25) {
 			rect(baseLinePosX + textWidth(currentText), baseLinePosY, baseLineWidth, baseLineHeight);
