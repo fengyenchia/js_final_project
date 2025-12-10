@@ -8,7 +8,7 @@ function preload() {
     img.a = loadImage("");
     
     soundFormats('mp3');
-    sound.a = loadSound("");;
+    sound.a = loadSound("");
 
     video.a = createVideo("");
 }

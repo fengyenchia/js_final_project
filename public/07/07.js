@@ -9,7 +9,7 @@ function preload() {
     img.A_2 = loadImage("../assets/images/7-2 (A).png");
     img.message = loadImage("../assets/images/message.png");
     // soundFormats('mp3');
-    // sound.a = loadSound("");;
+    // sound.a = loadSound("");
 
     // video.final_a = createVideo("../assets/videos/動畫7-1.mp4");
     video.final_a = createVideo("../assets/videos/動畫3-1.mp4");
