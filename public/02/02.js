@@ -1,53 +1,9 @@
-// // fadeStatus 是從 fadeInOut.js 引入的全域變數
-
-// let img = {};
-// let sound = {};
-// let video = {};
-
-// // function preload() {
-// //     img.a = loadImage("");
-
-// //     soundFormats('mp3');
-// //     sound.a = loadSound("");;
-
-// //     video.a = createVideo("");
-// // }
-
-// function setup() {
-//     createCanvas(1440, 1024);
-// }
-
-// function draw() {
-//     background(100);
-
-//     if (fadeStatus == "none") {
-//         gameContent();
-//     }
-
-//     fadeInOut("/03");
-// }
-
-// // -----------------------------------------
-// // 將遊戲內容放在gameContent()裡
-// function gameContent() {
-//     fill(255);
-//     stroke(0);
-//     circle(width/2, height/2, 200);
-
-
-//     if (mouseIsPressed && fadeStatus == "none") {
-//         fadeStatus = "out";
-//     }
-// }
-
-// fadeStatus 是從 fadeInOut.js 引入的全域變數
-
-
 let img = {};
 // let sound = {};
 // let video = {};
 let page = 1;
-let allText = ["終於下班回到家了！來放鬆一下吧！", "終於下班回到家了！來放鬆一下吧！", "終於下班回到家了！來放鬆一下吧！", "終於下班回到家了！來放鬆一下吧！", "終於下班回到家了！來放鬆一下吧！", "終於下班回到家了！來放鬆一下吧！", "終於下班回到家了！來放鬆一下吧！"];
+let allText = ["1.終於下班回到家了！來放鬆一下吧！", "2.終於下班回到家了！來放鬆一下吧！", "3.終於下班回到家了！來放鬆一下吧！", "4.終於下班回到家了！來放鬆一下吧！",
+    "5.終於下班回到家了！來放鬆一下吧！", "6.終於下班回到家了！來放鬆一下吧！", "7.終於下班回到家了！來放鬆一下吧！"];
 
 function preload() {
     img.bg1 = loadImage("../assets/images/2-1.png");
@@ -248,47 +204,33 @@ function gameContent() {
         fill(255);
         text('>>點擊或按空白鍵繼續', 1360, 940);
     }
-    switch (page) {
-        case 1:
-            typing("終於下班回到家了！來放鬆一下吧！", 100, 880, 30, 0, 0, 0, 0, 1, 10);
-            break;
-        case 2:
-            typing("終於下班回到家了！來放鬆一下吧！", 100, 880, 30, 0, 0, 0, 0, 1, 10);
-            break;
-        case 3:
-            typing("終於下班回到家了！來放鬆一下吧！", 100, 880, 30, 0, 0, 0, 0, 1, 10);
-            break;
-        case 4:
-            typing("終於下班回到家了！來放鬆一下吧！", 100, 880, 30, 0, 0, 0, 0, 1, 10);
-            break;
-        case 5:
-            typing("終於下班回到家了！來放鬆一下吧！", 100, 880, 30, 0, 0, 0, 0, 1, 10);
-            break;
-        case 6:
-            typing("終於下班回到家了！來放鬆一下吧！", 100, 880, 30, 0, 0, 0, 0, 1, 10);
-            break;
-        case 7:
-            typing("終於下班回到家了！來放鬆一下吧！", 100, 880, 30, 0, 0, 0, 0, 1, 10);
-            break;
+
+    typing(allText[page - 1], 100, 880, 30, 0, 0, 0, 0, 1, 10);
+    if (currentText == allText[page - 1]) {
+        if (mouseIsPressed || keyIsPressed && key == ' ') {
+            page++;
+            currentText = "";
+            i = 0;
+        }
     }
 }
 // ============== 互動控制區 ==============
 
 
-// 1. 滑鼠點擊觸發
-function mousePressed() {
-    // 每次點擊，頁數加 1
-    page = page + 1;
+// // 1. 滑鼠點擊觸發
+// function mousePressed() {
+//     // 每次點擊，頁數加 1
+//     page++;
 
-    // 選用：如果想循環回到第一頁，可以加這行
-    // if (page > 2) { page = 1; }
-}
+//     // 選用：如果想循環回到第一頁，可以加這行
+//     // if (page > 2) { page = 1; }
+// }
 
 
-// 2. 鍵盤按鍵觸發
-function keyPressed() {
-    // 檢查是否按下空白鍵 (' ')
-    if (key === ' ') {
-        page = page + 1;
-    }
-}
+// // 2. 鍵盤按鍵觸發
+// function keyPressed() {
+//     // 檢查是否按下空白鍵 (' ')
+//     if (key === ' ') {
+//         page++;
+//     }
+// }

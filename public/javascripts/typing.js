@@ -1,5 +1,3 @@
-let myInput;
-
 let startAutoEnterText = false;
 let currentText = "";
 let i = 0;
