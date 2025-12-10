@@ -35,7 +35,7 @@ function preload() {
 
 let startVideo = false;
 let fiveSecond = false;
-let addCoffee = 5;
+let addCoffee = 0;
 let completeAddCoffee = false;
 let posMoveLeft = 0;
 let moveLeftSpeed = 0.02;
