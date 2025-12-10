@@ -42,6 +42,7 @@ let moveLeftSpeed = 0.02;
 
 let paper = 0;
 let receivePaper = false;
+let messageTime = 0;
 
 function setup() {
     createCanvas(1440, 1024);
@@ -138,44 +139,35 @@ function gameContent() {
         image(img.check_5, posX_check, (height - height / 4) * 5 / 5)
     }
 
-    // ----- 紙條
+    // 紙條
     if (posMoveLeft >= 1) {
         imageMode(CENTER);
         image(img.paperbg, width / 2, height / 2, 1440, 1024);
         image(img.receivePaper, 140, (height - height / 4) * 1 / 5);
-        if(!receivePaper){
+        if (!receivePaper) {
             image(img.smallbtn, 210, 80 + (height - height / 4) * 1 / 5);
         }
-        else{
+        else {
             imageMode(CORNER);
             image(img.smallbtn, -300, 80 + (height - height / 4) * 1 / 5);
         }
 
         if (receivePaper) {
-            if(paper==1){
-                image(img.message_1, width / 3-5, height / 2.4);
+            if (paper == 1) {
+                image(img.message_1, width / 3 - 5, height / 2.4);
             }
-            else if(paper==2){
-                image(img.message_2, width / 3-5, height / 2.4);
+            else if (paper == 2) {
+                image(img.message_2, width / 3 - 5, height / 2.4);
             }
-            else if(paper==3){
-                image(img.message_3, width / 3-5, height / 2.4);
+            else if (paper == 3) {
+                image(img.message_3, width / 3 - 5, height / 2.4);
             }
-            if (frameCount % 180 === 0) {  // 等3秒
+            if (frameCount-messageTime > 180) {
                 paper = -1;
             }
         }
     }
 
-    textSize(20);
-    fill(255)
-    text(mouseX + "," + mouseY, mouseX, mouseY);
-
-    // if (paper >= 25) {
-    //     receivePaper = true;
-    // }
-
-    // if (mouseIsPressed && fadeStatus == "none" && fiveSecond && addCoffee == 5) {
     if (fadeStatus == "none" && paper == -1) {
         fadeStatus = "out";
     }
@@ -184,7 +176,8 @@ function gameContent() {
 function mouseClicked() {
     if (mouseX > 145 && mouseX < 275 && mouseY > 210 && mouseY < 250) {
         receivePaper = true;
+        paper = floor(random(1, 4));
         console.log(paper);
-        paper=1;
+        messageTime = frameCount;
     }
 }
