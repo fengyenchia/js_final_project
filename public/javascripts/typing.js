@@ -16,7 +16,6 @@ function typing(typingText, textX, textY, mytextSize, baseLinePosX, baseLinePosY
         strokeWeight(myStrokeWeight);
         stroke(255);
         textAlign(LEFT);
-        // let textX = (width-textWidth(typingText))/2;
 		text(currentText, textX, textY);
 		if (frameCount % 50 < 25) {
 			rect(baseLinePosX + textWidth(currentText), baseLinePosY, baseLineWidth, baseLineHeight);
