@@ -19,7 +19,7 @@ function preload() {
     sound.open = loadSound("../assets/sounds/開門.mp3");
     sound.close = loadSound("../assets/sounds/關門.mp3");
     sound.lock = loadSound("../assets/sounds/鎖門.mp3");
-    sound.door = loadSound("../assets/sounds/捶門2.mp3");
+    sound.door = loadSound("../assets/sounds/捶門1.mp3");
 
     video.run = createVideo("../assets/videos/動畫3-1.mp4");
     video.run.hide();
