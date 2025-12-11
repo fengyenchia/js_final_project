@@ -8,8 +8,11 @@ function preload() {
     img.A_1 = loadImage("../assets/images/7-1 (A).png");
     img.A_2 = loadImage("../assets/images/7-2 (A).png");
     img.message = loadImage("../assets/images/message.png");
-    // soundFormats('mp3');
-    // sound.a = loadSound("");
+
+    soundFormats('mp3');
+    sound.open = loadSound("../assets/sounds/開門.mp3");
+    sound.click = loadSound("../assets/sounds/捶門2.mp3");
+    sound.closet = loadSound("../assets/sounds/衣櫃門.mp3");
 
     // video.final_a = createVideo("../assets/videos/動畫7-1.mp4");
     video.final_a = createVideo("../assets/videos/動畫3-1.mp4");
@@ -34,7 +37,6 @@ function setup() {
     let optionString = localStorage.getItem('option');
     if (optionString !== null) {
         option_06 = parseInt(optionString);
-        console.log("從第 6 關收到的選項是: " + option_06);
     } else {
         option_06 = 1;
     }
@@ -44,6 +46,21 @@ function draw() {
     background(100);
 
     if (fadeStatus == "none") {
+        if (sound.open.isLoaded() && soundTrigger == false && page == 1 && option_06 == 1) {
+            sound.open.play();
+            soundTrigger = true;
+        }
+        else if (page == 2) {
+            sound.open.pause();
+        }
+
+        if (sound.click.isLoaded() && soundTrigger == false && page == 1 && option_06 == 2) {
+            sound.click.play();
+            soundTrigger = true;
+        }
+        else if (page == 2) {
+            sound.click.pause();
+        }
         gameContent();
     }
 
@@ -62,7 +79,7 @@ let page = 1;
 let allText_1 = ["你知道你同事常常動你的手機嗎？我之前還常看到他在你家附近閒晃！", "……他在你後面！"];
 let allText_2 = ["你知道你同事常常動你的手機嗎？我之前還常看到他在你家附近閒晃......", "等了這麼久，終於進到你家了......"];
 
-
+let soundTrigger = false;
 
 // -----------------------------------------
 // 將遊戲內容放在gameContent()裡
@@ -187,6 +204,9 @@ function gameContent() {
         if (currentText == allText_2[page - 1]) {
             if (mouseIsPressed || keyIsPressed && key == ' ') {
                 if (page == 1 && fiveSecond_b_1 && !startVideo_b_1) {
+                    if (sound.closet.isLoaded()) {
+                        sound.closet.play();
+                    }
                     page++;
                 }
                 else if (page == 2 && fiveSecond_b_2 && !startVideo_b_2) {

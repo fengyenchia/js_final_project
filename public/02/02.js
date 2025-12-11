@@ -28,6 +28,8 @@ function preload() {
     soundFormats('mp3');
     sound.open = loadSound("../assets/sounds/開門.mp3");
     sound.close = loadSound("../assets/sounds/關門.mp3");
+    sound.ring = loadSound("../assets/sounds/通知聲.mp3");
+    sound.typing = loadSound("../assets/sounds/手機打字.mp3");
 
     //     video.a = createVideo("");
 }
@@ -38,7 +40,7 @@ function setup() {
 
 function draw() {
     background(100);
-    if(fadeStatus == "in"){
+    if (fadeStatus == "in") {
     }
     if (fadeStatus == "none") {
         if (sound.open.isLoaded() && soundTrigger == false) {
@@ -331,12 +333,19 @@ function mousePressed() {
         // ---- 檢查是否點到 B ----
         if (mouseX > bx - bw / 2 && mouseX < bx + bw / 2 &&
             mouseY > by - bh / 2 && mouseY < by + bh / 2) {
+            if (sound.typing.isLoaded()) {
+                sound.typing.play();
+            }
             // B：繼續劇情 → page 8
             page = 8;
+
             return;
         }
 
         return; // Page 7 不需要其它點擊反應
+    }
+    if(page==8){
+        sound.typing.pause();
     }
     // ================= 既有的邏輯 =================
 
@@ -346,6 +355,11 @@ function mousePressed() {
     }
     // Page 2 / 3 點特定矩形才前進
     else if (page === 2 || page === 3) {
+        if (page === 2) {
+            if (sound.ring.isLoaded()) {
+                sound.ring.play();
+            }
+        }
         let rectWidth = 180;
         let targetY_start = 500;
         let targetY_end = height - 210;

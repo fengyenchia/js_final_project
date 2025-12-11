@@ -12,8 +12,8 @@ function preload() {
 
     img.message = loadImage("../assets/images/message.png");
 
-    // soundFormats('mp3');
-    // sound.a = loadSound("");
+    soundFormats('mp3');
+    sound.bath = loadSound("../assets/sounds/洗澡.mp3");
 
     video.badroom = createVideo("../assets/videos/動畫3-1.mp4");
     video.badroom.hide();
@@ -28,6 +28,10 @@ function draw() {
     background(100);
 
     if (fadeStatus == "none") {
+        if (sound.bath.isLoaded() && soundTrigger == false) {
+            sound.bath.play();
+            soundTrigger = true;
+        }
         gameContent();
     }
 
@@ -40,6 +44,7 @@ let fiveSecond = false;
 let page = 1;
 let allText = ["洗完了！真舒服！", "「手機正在從 iCloud 同步 3 張新照片」？怎麼回事？", " ", " ", "櫃台、倉庫、洗手間......呃啊！這都是我上班時的照片！有人在偷拍我嗎？"];
 
+let soundTrigger = false;
 // -----------------------------------------
 // 將遊戲內容放在gameContent()裡
 function gameContent() {

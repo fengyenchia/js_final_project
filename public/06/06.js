@@ -14,8 +14,12 @@ function preload() {
 
     img.message = loadImage("../assets/images/message.png");
 
-    // soundFormats('mp3');
-    // sound.a = loadSound("");
+    soundFormats('mp3');
+    sound.foot = loadSound("../assets/sounds/腳步聲.mp3");
+    sound.open = loadSound("../assets/sounds/開門.mp3");
+    sound.close = loadSound("../assets/sounds/關門.mp3");
+    sound.lock = loadSound("../assets/sounds/鎖門.mp3");
+    sound.door = loadSound("../assets/sounds/捶門2.mp3");
 
     video.run = createVideo("../assets/videos/動畫3-1.mp4");
     video.run.hide();
@@ -33,6 +37,13 @@ function draw() {
     background(100);
 
     if (fadeStatus == "none") {
+        if (sound.foot.isLoaded() && soundTrigger == false && page == 1) {
+            sound.foot.play();
+            soundTrigger = true;
+        }
+        else if (page == 2) {
+            sound.foot.pause();
+        }
         gameContent();
     }
 
@@ -51,6 +62,8 @@ let allText_2 = ["對不起！我不是壞人！我…我有事一定要跟你�
 
 let stage = 1;
 let option = 1;
+
+let soundTrigger = false;
 // -----------------------------------------
 // 將遊戲內容放在gameContent()裡
 function gameContent() {
@@ -191,6 +204,15 @@ function gameContent() {
                 else if (page == 2 && fiveSecond_hand && !startVideo_hand) {
                     page++;
                     fadeStatus = "outNotJump";
+                    if (sound.open.isLoaded()) {
+                        sound.open.play();
+                    }
+                    if (sound.close.isLoaded()) {
+                        sound.close.play();
+                    }
+                    // if (sound.lock.isLoaded()) {
+                    //     sound.lock.play();
+                    // }
                     stage = 2;
                     page = 1;
                 }
@@ -202,7 +224,10 @@ function gameContent() {
     else if (stage == 2) {
         typing(allText_2[page - 1], 100, 880, 30, 0, 0, 0, 0, 1, 10);
         if (currentText == allText_2[page - 1]) {
-            if (page==1 && (mouseIsPressed || keyIsPressed && key == ' ')) {
+            if (page == 1 && (mouseIsPressed || keyIsPressed && key == ' ')) {
+                if (sound.door.isLoaded()) {
+                    sound.door.play();
+                }
                 if (page == 1) {
                     page++;
                     currentText = "";
@@ -213,12 +238,3 @@ function gameContent() {
     }
 
 }
-
-
-
-
-
-// if (mouseIsPressed && fadeStatus == "none") {
-//     fadeStatus = "out";
-// }
-
