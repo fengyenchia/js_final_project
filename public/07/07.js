@@ -25,8 +25,19 @@ function preload() {
     video.final_b_2.pause();
 }
 
+
+let option_06;
 function setup() {
     createCanvas(1440, 1024);
+
+    // localStorage 儲存的是字串，需要用 parseInt 轉回數字
+    let optionString = localStorage.getItem('option');
+    if (optionString !== null) {
+        option_06 = parseInt(optionString);
+        console.log("從第 6 關收到的選項是: " + option_06);
+    } else {
+        option_06 = 1;
+    }
 }
 
 function draw() {
@@ -51,17 +62,17 @@ let page = 1;
 let allText_1 = ["你知道你同事常常動你的手機嗎？我之前還常看到他在你家附近閒晃！", "……他在你後面！"];
 let allText_2 = ["你知道你同事常常動你的手機嗎？我之前還常看到他在你家附近閒晃......", "等了這麼久，終於進到你家了......"];
 
-let option = 2;
+
 
 // -----------------------------------------
 // 將遊戲內容放在gameContent()裡
 function gameContent() {
     if (page == 1) {
-        if (option == 1) {
+        if (option_06 == 1) {
             imageMode(CENTER);
             image(img.A_1, width / 2, height / 2, 1024 * 1.41, 1024 * 1.41);
         }
-        else if (option == 2) {
+        else if (option_06 == 2) {
             if (!startVideo_b_1 && !fiveSecond_b_1) {
                 video.final_b_1.time(0);
                 video.final_b_1.loop();
@@ -100,7 +111,7 @@ function gameContent() {
         imageMode(CENTER);
         image(img.A_2, width / 2, height / 2, 1024 * 1.41, 1024 * 1.41);
 
-        if (option == 1) {
+        if (option_06 == 1) {
             if (!startVideo_a && !fiveSecond_a) {
                 video.final_a.time(0);
                 video.final_a.loop();
@@ -120,7 +131,7 @@ function gameContent() {
                 }
             }
         }
-        else if (option == 2) {
+        else if (option_06 == 2) {
             if (!startVideo_b_2 && !fiveSecond_b_2) {
                 video.final_b_2.time(0);
                 video.final_b_2.loop();
@@ -155,7 +166,7 @@ function gameContent() {
         text('>>點擊或按空白鍵繼續', 1360, 940);
     }
 
-    if (option == 1) {
+    if (option_06 == 1) {
         typing(allText_1[page - 1], 100, 880, 30, 0, 0, 0, 0, 1, 10);
         if (currentText == allText_1[page - 1]) {
             if (mouseIsPressed || keyIsPressed && key == ' ') {
@@ -170,14 +181,14 @@ function gameContent() {
             }
         }
     }
-    else if (option == 2) {
+    else if (option_06 == 2) {
         typing(allText_2[page - 1], 100, 880, 30, 0, 0, 0, 0, 1, 10);
         if (currentText == allText_2[page - 1]) {
             if (mouseIsPressed || keyIsPressed && key == ' ') {
                 if (page == 1 && fiveSecond_b_1 && !startVideo_b_1) {
                     page++;
                 }
-                else if(page == 2 && fiveSecond_b_2 && !startVideo_b_2) {
+                else if (page == 2 && fiveSecond_b_2 && !startVideo_b_2) {
                     page++;
                 }
                 currentText = "";
@@ -186,13 +197,7 @@ function gameContent() {
         }
     }
 
-
     if (fadeStatus == "none" && page > 2 && fiveSecond_b_2 && !startVideo_b_2) {
         fadeStatus = "out";
     }
-
-
-    // if (mouseIsPressed && fadeStatus == "none") {
-    //     fadeStatus = "out";
-    // }
 }

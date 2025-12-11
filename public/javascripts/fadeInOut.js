@@ -19,6 +19,12 @@ function fadeInOut(to) {
             fadeStatus = "jump"; // fade-out 完成，跳下一章
         }
     }
+    else if (fadeStatus == "outNotJump") {
+        fadeCount += fadeSpeed;
+        if (fadeCount >= 1) {
+            fadeStatus = "in";
+        }
+    }
 
     if (fadeStatus != "none") {
         noStroke();
