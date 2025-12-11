@@ -1,7 +1,7 @@
 // fadeStatus 是從 fadeInOut.js 引入的全域變數
 
 let img = {};
-// let sound = {};
+let sound = {};
 // let video = {};
 let page = 1;
 // ====== 打字機效果用變數 ======
@@ -9,6 +9,8 @@ let fullText = "";
 let typingIndex = 0;
 let typingSpeed = 5;
 let useTypingEffect = false;
+
+let soundTrigger = false;
 
 function preload() {
     img.bg1 = loadImage("../assets/images/2-1.png");
@@ -22,8 +24,10 @@ function preload() {
     img.messagesmall = loadImage("../assets/images/messagesmall.png");
     img.arrow = loadImage("../assets/images/arrow.png");
     img.bt = loadImage("../assets/images/bt.png");
-    //     soundFormats('mp3');
-    //     sound.a = loadSound("");;
+
+    soundFormats('mp3');
+    sound.open = loadSound("../assets/sounds/開門.mp3");
+    sound.close = loadSound("../assets/sounds/關門.mp3");
 
     //     video.a = createVideo("");
 }
@@ -34,15 +38,14 @@ function setup() {
 
 function draw() {
     background(100);
+    if(fadeStatus == "in"){
+    }
     if (fadeStatus == "none") {
+        if (sound.open.isLoaded() && soundTrigger == false) {
+            sound.open.play();
+            soundTrigger = true;
+        }
         gameContent();
-        fill(0, 0, 255); // 藍色文字
-        textSize(24);
-        textAlign(LEFT);
-
-        // 2. 繪製座標文字
-        // 顯示在畫面的左上角 (例如座標 20, 40 的位置)
-        text(`滑鼠 X: ${mouseX}, Y: ${mouseY}`, 20, 40);
     }
 
     fadeInOut("/03");
@@ -296,9 +299,6 @@ function gameContent() {
         fill(255);
         text('>>點擊或按空白鍵繼續', 1360, 940);
     }
-    // if (mouseIsPressed && fadeStatus == "none") {
-    //  fadeStatus = "out";
-    //  }
 }
 // ============== 互動控制區 ==============
 function mousePressed() {

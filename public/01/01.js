@@ -24,8 +24,8 @@ function preload() {
     img.receivePaper = loadImage("../assets/images/1-17.png");
     img.smallbtn = loadImage("../assets/images/1-18.png");
 
-    // soundFormats('mp3');
-    // sound.a = loadSound("");
+    soundFormats('mp3');
+    sound.coffee = loadSound("../assets/sounds/沖咖啡.mp3");
 
     video.coffee = createVideo("../assets/videos/動畫1-1.mp4");
     video.coffee.hide();
@@ -81,6 +81,10 @@ function gameContent() {
             video.coffee.loop();
             startVideo = true;
             fiveSecond = false;
+
+            if (sound.coffee.isLoaded()) {
+                sound.coffee.play();
+            }
         }
     }
 
@@ -96,6 +100,7 @@ function gameContent() {
             startVideo = false;
             addCoffee++;
             console.log(addCoffee);
+            sound.coffee.stop();
         }
     }
 
