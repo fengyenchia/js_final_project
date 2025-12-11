@@ -36,7 +36,8 @@ function gameContent() {
     image(img.smallBg, width / 2, height / 2.3);
 
     if (frameCount < 500) {
-        typing("被監視的咖啡廳", (width-textWidth("被監視的咖啡廳"))/2, height / 2.3, 80, 450, height / 2.3, 40, 5, 2, 25);
+        // typing("被監視的咖啡廳", textWidth("被監視的咖啡廳"), height / 2.3, 80, 450, height / 2.3, 40, 5, 2, 25);
+        typing("被監視的咖啡廳", (width-textWidth("被監視的咖啡廳"))/3.2, height / 2.3, 80, 450, height / 2.3, 36, 5, 2, 25);
     }
     else {
         textSize(50);

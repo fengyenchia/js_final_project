@@ -175,6 +175,7 @@ function gameContent() {
                 }
                 else {
                     page++;
+                    background(0);
                 }
                 currentText = "";
                 i = 0;
@@ -190,6 +191,7 @@ function gameContent() {
                 }
                 else if (page == 2 && fiveSecond_b_2 && !startVideo_b_2) {
                     page++;
+                    background(0);
                 }
                 currentText = "";
                 i = 0;
@@ -197,7 +199,10 @@ function gameContent() {
         }
     }
 
-    if (fadeStatus == "none" && page > 2 && fiveSecond_b_2 && !startVideo_b_2) {
+    if (fadeStatus == "none" && page > 2 && fiveSecond_a && !startVideo_a) {
+        fadeStatus = "out";
+    }
+    else if (fadeStatus == "none" && page > 2 && fiveSecond_b_2 && !startVideo_b_2) {
         fadeStatus = "out";
     }
 }
