@@ -117,7 +117,7 @@ function gameContent() {
         textAlign(LEFT);
         textSize(32);
         fill(255);
-        text('ＸＸＸ', 100, 820);
+        text('陌生人', 100, 820);
 
         textAlign(RIGHT);
         textSize(32);
@@ -175,8 +175,13 @@ function gameContent() {
         textAlign(LEFT);
         textSize(32);
         fill(255);
-        text('ＸＸＸ', 100, 820);
 
+        if (option_06 == 1) {
+            text('陌生人', 100, 820);
+        }
+        else if (option_06 == 2) {
+            text('咖啡廳同事', 100, 820);
+        }
         textAlign(RIGHT);
         textSize(32);
         fill(255);
@@ -184,20 +189,20 @@ function gameContent() {
     }
 
     if (option_06 == 1) {
-        typing(allText_1[page - 1], 100, 880, 30, 0, 0, 0, 0, 1, 10);
+        typing(allText_1[page - 1], 100, 880, 30, 0, 0, 0, 0, 0, 10);
         if (currentText == allText_1[page - 1]) {
             if (mouseIsPressed || keyIsPressed && key == ' ') {
                 page++;
                 currentText = "";
                 i = 0;
             }
-            if(page>2){
+            if (page > 2) {
                 fadeStatus = "out";
             }
         }
     }
     else if (option_06 == 2) {
-        typing(allText_2[page - 1], 100, 880, 30, 0, 0, 0, 0, 1, 10);
+        typing(allText_2[page - 1], 100, 880, 30, 0, 0, 0, 0, 0, 10);
         if (currentText == allText_2[page - 1]) {
             if (mouseIsPressed || keyIsPressed && key == ' ') {
                 currentText = "";
