@@ -15,7 +15,7 @@ function preload() {
     sound.closet = loadSound("../assets/sounds/衣櫃門.mp3");
 
     // video.final_a = createVideo("../assets/videos/動畫7-1.mp4");
-    video.final_a = createVideo("../assets/videos/動畫3-1.mp4");
+    video.final_a = createVideo("../assets/videos/動畫7-1(A).mp4");
     video.final_a.hide();
     video.final_a.pause();
 
@@ -23,7 +23,7 @@ function preload() {
     video.final_b_1.hide();
     video.final_b_1.pause();
 
-    video.final_b_2 = createVideo("../assets/videos/動畫3-1.mp4");
+    video.final_b_2 = createVideo("../assets/videos/動畫7-2(B).mp4");
     video.final_b_2.hide();
     video.final_b_2.pause();
 }
@@ -140,8 +140,8 @@ function gameContent() {
                 imageMode(CORNER);
                 image(video.final_a, 0, 0, width, height);
 
-                if (video.final_a.time() >= 5 && !fiveSecond_a) {
-                    video.final_a.time(5);
+                if (video.final_a.time() >= 8 && !fiveSecond_a) {
+                    video.final_a.time(8);
                     video.final_a.pause();
                     fiveSecond_a = true;
                     startVideo_a = false;
@@ -160,8 +160,8 @@ function gameContent() {
                 imageMode(CORNER);
                 image(video.final_b_2, 0, 0, width, height);
 
-                if (video.final_b_2.time() >= 5 && !fiveSecond_b_2) {
-                    video.final_b_2.time(5);
+                if (video.final_b_2.time() >= 8 && !fiveSecond_b_2) {
+                    video.final_b_2.time(8);
                     video.final_b_2.pause();
                     fiveSecond_b_2 = true;
                     startVideo_b_2 = false;
