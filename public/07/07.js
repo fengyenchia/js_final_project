@@ -131,7 +131,7 @@ function gameContent() {
         if (option_06 == 1) {
             if (!startVideo_a && !fiveSecond_a) {
                 video.final_a.time(0);
-                video.final_a.loop();
+                video.final_a.play();
                 startVideo_a = true;
                 fiveSecond_a = false;
             }
@@ -151,7 +151,7 @@ function gameContent() {
         else if (option_06 == 2) {
             if (!startVideo_b_2 && !fiveSecond_b_2) {
                 video.final_b_2.time(0);
-                video.final_b_2.loop();
+                video.final_b_2.play();
                 startVideo_b_2 = true;
                 fiveSecond_b_2 = false;
             }
@@ -187,15 +187,12 @@ function gameContent() {
         typing(allText_1[page - 1], 100, 880, 30, 0, 0, 0, 0, 1, 10);
         if (currentText == allText_1[page - 1]) {
             if (mouseIsPressed || keyIsPressed && key == ' ') {
-                if (page == 2 && fiveSecond_a && !startVideo_a) {
-                    page++;
-                }
-                else {
-                    page++;
-                    background(0);
-                }
+                page++;
                 currentText = "";
                 i = 0;
+            }
+            if(page>2){
+                fadeStatus = "out";
             }
         }
     }
@@ -203,26 +200,19 @@ function gameContent() {
         typing(allText_2[page - 1], 100, 880, 30, 0, 0, 0, 0, 1, 10);
         if (currentText == allText_2[page - 1]) {
             if (mouseIsPressed || keyIsPressed && key == ' ') {
+                currentText = "";
+                i = 0;
                 if (page == 1 && fiveSecond_b_1 && !startVideo_b_1) {
                     if (sound.closet.isLoaded()) {
                         sound.closet.play();
                     }
-                    page++;
                 }
-                else if (page == 2 && fiveSecond_b_2 && !startVideo_b_2) {
-                    page++;
-                    background(0);
+                else if (page == 2) {
+                    fadeStatus = "out";
                 }
-                currentText = "";
-                i = 0;
+                page++;
+
             }
         }
-    }
-
-    if (fadeStatus == "none" && page > 2 && fiveSecond_a && !startVideo_a) {
-        fadeStatus = "out";
-    }
-    else if (fadeStatus == "none" && page > 2 && fiveSecond_b_2 && !startVideo_b_2) {
-        fadeStatus = "out";
     }
 }
