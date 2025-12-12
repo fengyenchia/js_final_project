@@ -61,7 +61,7 @@ let allText_1 = ["請等一下，我有話一定要告訴你！", "你是誰！�
 let allText_2 = ["對不起！我不是壞人！我…我有事一定要跟你說！請你趕快開門！", " "];
 
 let stage = 1;
-let option = 1;
+let option = 0;
 
 let soundTrigger = false;
 // -----------------------------------------
@@ -97,7 +97,7 @@ function gameContent() {
         textAlign(LEFT);
         textSize(32);
         fill(255);
-        text('ＸＸＸ', 100, 820);
+        text('陌生人', 100, 820);
 
         textAlign(RIGHT);
         textSize(32);
@@ -136,7 +136,7 @@ function gameContent() {
         textAlign(LEFT);
         textSize(32);
         fill(255);
-        text('ＸＸＸ', 100, 820);
+        text('林芷安', 100, 820);
 
         textAlign(RIGHT);
         textSize(32);
@@ -157,7 +157,7 @@ function gameContent() {
         textAlign(LEFT);
         textSize(32);
         fill(255);
-        text('ＸＸＸ', 100, 820);
+        text('陌生人', 100, 820);
 
         textAlign(RIGHT);
         textSize(32);
@@ -165,7 +165,7 @@ function gameContent() {
         text('>>點擊或按空白鍵繼續', 1360, 940);
         console.log(page, stage);
     }
-    else if (page == 2 && stage == 2) {
+    else if (page == 2 && stage == 2 && option == 0) {
         imageMode(CENTER);
         image(img.bg_4, width / 2, height / 2, 1024 * 1.41, 1024 * 1.41);
 
@@ -189,20 +189,16 @@ function gameContent() {
         console.log(page, stage);
     }
 
-
-
-
     // -----------------------------------------
 
     if (stage == 1) {
-        typing(allText_1[page - 1], 100, 880, 30, 0, 0, 0, 0, 1, 10);
+        typing(allText_1[page - 1], 100, 880, 30, 0, 0, 0, 0, 0, 10);
         if (currentText == allText_1[page - 1]) {
             if (mouseIsPressed || keyIsPressed && key == ' ') {
                 if (page == 1 && fiveSecond_run && !startVideo_run) {
                     page++;
                 }
                 else if (page == 2 && fiveSecond_hand && !startVideo_hand) {
-                    page++;
                     fadeStatus = "outNotJump";
                     if (sound.open.isLoaded()) {
                         sound.open.play();
@@ -210,9 +206,9 @@ function gameContent() {
                     if (sound.close.isLoaded()) {
                         sound.close.play();
                     }
-                    // if (sound.lock.isLoaded()) {
-                    //     sound.lock.play();
-                    // }
+                    if (sound.lock.isLoaded()) {
+                        sound.lock.play();
+                    }
                     stage = 2;
                     page = 1;
                 }
@@ -222,19 +218,18 @@ function gameContent() {
         }
     }
     else if (stage == 2) {
-        typing(allText_2[page - 1], 100, 880, 30, 0, 0, 0, 0, 1, 10);
+        typing(allText_2[page - 1], 100, 880, 30, 0, 0, 0, 0, 0, 10);
         if (currentText == allText_2[page - 1]) {
             if (page == 1 && (mouseIsPressed || keyIsPressed && key == ' ')) {
+                page = 2;
+                currentText = "";
+                i = 0;
+            }
+            else if (page == 2 && (mouseIsPressed || keyIsPressed && key == ' ')) {
                 if (sound.door.isLoaded()) {
                     sound.door.play();
                 }
-                if (page == 1) {
-                    page++;
-                    currentText = "";
-                    i = 0;
-                }
-            }
+            }    
         }
     }
-
 }

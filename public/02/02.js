@@ -30,8 +30,9 @@ function preload() {
     sound.close = loadSound("../assets/sounds/關門.mp3");
     sound.ring = loadSound("../assets/sounds/通知聲.mp3");
     sound.typing = loadSound("../assets/sounds/手機打字.mp3");
+    sound.light = loadSound("../assets/sounds/開燈.mp3");
 
-    //     video.a = createVideo("");
+    // video.a = createVideo("../assets/videos/動畫2-1.mp4");
 }
 
 function setup() {
@@ -45,6 +46,9 @@ function draw() {
     if (fadeStatus == "none") {
         if (sound.open.isLoaded() && soundTrigger == false) {
             sound.open.play();
+        }
+        if (sound.light.isLoaded() && soundTrigger == false) {
+            sound.light.play();
             soundTrigger = true;
         }
         gameContent();
@@ -83,7 +87,7 @@ function gameContent() {
         textAlign(LEFT);
         textSize(32);
         fill(255);
-        text('ＸＸＸ', 100, 820);
+        text('林芷安', 100, 820);
 
 
         if (!useTypingEffect) {
@@ -138,7 +142,7 @@ function gameContent() {
         textAlign(LEFT);
         textSize(32);
         fill(255);
-        text('ＸＸＸ', 100, 820);
+        text('林芷安', 100, 820);
 
         if (!useTypingEffect) {
             resetTyping("完全不認識耶......他還傳了訊息給我？");
@@ -166,7 +170,7 @@ function gameContent() {
 
 
         if (!useTypingEffect) {
-            resetTyping("找到你的 IG 了，以後常去探班～」");
+            resetTyping("「找到你的 IG 了，以後常去探班～」");
             useTypingEffect = true;
         }
 
@@ -187,7 +191,7 @@ function gameContent() {
         textAlign(LEFT);
         textSize(32);
         fill(255);
-        text('XXX', 100, 820);
+        text('林芷安', 100, 820);
 
 
         if (!useTypingEffect) {
@@ -227,7 +231,7 @@ function gameContent() {
         textAlign(LEFT);
         textSize(32);
         fill(255);
-        text('ＸＸＸ', 100, 820);
+        text('林芷安', 100, 820);
 
 
         if (!useTypingEffect) {
@@ -256,7 +260,7 @@ function gameContent() {
         textAlign(LEFT);
         textSize(32);
         fill(255);
-        text('ＸＸＸ', 100, 820);
+        text('林芷安', 100, 820);
 
 
         // ★ 只在第一次進到這一頁時重置打字效果
@@ -285,7 +289,7 @@ function gameContent() {
         textAlign(LEFT);
         textSize(32);
         fill(255);
-        text('ＸＸＸ', 100, 820);
+        text('林芷安', 100, 820);
 
 
         if (!useTypingEffect) {
@@ -344,7 +348,7 @@ function mousePressed() {
 
         return; // Page 7 不需要其它點擊反應
     }
-    if(page==8){
+    if (page == 8) {
         sound.typing.pause();
     }
     // ================= 既有的邏輯 =================

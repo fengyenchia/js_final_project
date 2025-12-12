@@ -162,10 +162,10 @@ function gameContent() {
                 image(img.message_1, width / 3 - 5, height / 2.4);
             }
             else if (paper == 2) {
-                image(img.message_2, width / 3 - 5, height / 2.4);
+                image(img.message_2, width / 3 - 80, height / 2.4);
             }
             else if (paper == 3) {
-                image(img.message_3, width / 3 - 5, height / 2.4);
+                image(img.message_3, width / 3 - 55, height / 2.4);
             }
             if (frameCount-messageTime > 180) {
                 paper = -1;

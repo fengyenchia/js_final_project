@@ -42,7 +42,7 @@ let startVideo = false;
 let fiveSecond = false;
 
 let page = 1;
-let allText = ["洗完了！真舒服！", "「手機正在從 iCloud 同步 3 張新照片」？怎麼回事？", " ", " ", "櫃台、倉庫、洗手間......呃啊！這都是我上班時的照片！有人在偷拍我嗎？"];
+let allText = ["洗完了！真舒服！", "「手機正在從 iCloud 同步 3 張新照片」怎麼回事？", " ", " ", "櫃台、倉庫、洗手間......呃啊！這都是我上班時的照片！有人在偷拍我嗎？"];
 
 let soundTrigger = false;
 // -----------------------------------------
@@ -78,7 +78,7 @@ function gameContent() {
             textAlign(LEFT);
             textSize(32);
             fill(255);
-            text('ＸＸＸ', 100, 820);
+            text('林芷安', 100, 820);
     
             textAlign(RIGHT);
             textSize(32);
@@ -95,7 +95,7 @@ function gameContent() {
             textAlign(LEFT);
             textSize(32);
             fill(255);
-            text('ＸＸＸ', 100, 820);
+            text('林芷安', 100, 820);
     
             textAlign(RIGHT);
             textSize(32);
@@ -121,7 +121,7 @@ function gameContent() {
             textAlign(LEFT);
             textSize(32);
             fill(255);
-            text('ＸＸＸ', 100, 820);
+            text('林芷安', 100, 820);
     
             textAlign(RIGHT);
             textSize(32);
@@ -129,7 +129,7 @@ function gameContent() {
             text('>>點擊或按空白鍵繼續', 1360, 940);
         }
     
-        typing(allText[page - 1], 100, 880, 30, 0, 0, 0, 0, 1, 10);
+        typing(allText[page - 1], 100, 880, 30, 0, 0, 0, 0, 0, 10);
         if (currentText == allText[page - 1]) {
             if (mouseIsPressed || keyIsPressed && key == ' ') {
                 page++;
