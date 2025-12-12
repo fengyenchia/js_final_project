@@ -3,11 +3,10 @@
 let img = {};
 let sound = {};
 let video = {};
-
+ 
 function preload() {
-    img.bg_1 = loadImage("../assets/images/6-1.png");
-    img.bg_2 = loadImage("../assets/images/6-2.png");
-    img.bg_3 = loadImage("../assets/images/6-3.png");
+    img.bg_1 = loadImage("../assets/images/6-2.png");
+    img.bg_2 = loadImage("../assets/images/6-3.png");
     img.bg_4 = loadImage("../assets/images/6-4.png");
     img.option_1 = loadImage("../assets/images/6-5.png");
     img.option_2 = loadImage("../assets/images/6-6.png");
@@ -71,25 +70,6 @@ function gameContent() {
         imageMode(CENTER);
         image(img.bg_1, width / 2, height / 2, 1024 * 1.41, 1024 * 1.41);
 
-        if (!startVideo_run && !fiveSecond_run) {
-            video.run.time(0);
-            video.run.loop();
-            startVideo_run = true;
-            fiveSecond_run = false;
-        }
-        // 繪製影片、檢查暫停的時間
-        if (startVideo_run || fiveSecond_run) {
-            imageMode(CORNER);
-            image(video.run, 0, 0, width, height);
-
-            if (video.run.time() >= 5 && !fiveSecond_run) {
-                video.run.time(5);
-                video.run.pause();
-                fiveSecond_run = true;
-                startVideo_run = false;
-            }
-        }
-
         imageMode(CENTER);
         image(img.message, width / 2, height - 150);
 
@@ -108,26 +88,6 @@ function gameContent() {
     else if (page == 2 && stage == 1) {
         imageMode(CENTER);
         image(img.bg_2, width / 2, height / 2, 1024 * 1.41, 1024 * 1.41);
-
-        if (!startVideo_hand && !fiveSecond_hand) {
-            video.hand.time(0);
-            video.hand.loop();
-            startVideo_hand = true;
-            fiveSecond_hand = false;
-        }
-        // 繪製影片、檢查暫停的時間
-        if (startVideo_hand || fiveSecond_hand) {
-            imageMode(CORNER);
-            image(video.hand, 0, 0, width, height);
-
-            if (video.hand.time() >= 5 && !fiveSecond_hand) {
-                video.hand.time(5);
-                video.hand.pause();
-                fiveSecond_hand = true;
-                startVideo_hand = false;
-
-            }
-        }
 
         imageMode(CENTER);
         image(img.message, width / 2, height - 150);
@@ -162,7 +122,7 @@ function gameContent() {
         textAlign(RIGHT);
         textSize(32);
         fill(255);
-        text('>>點擊或按空白鍵繼續', 1360, 940);
+        text('>>按空白鍵繼續', 1360, 940);
         console.log(page, stage);
     }
     else if (page == 2 && stage == 2 && option == 0) {
@@ -195,10 +155,12 @@ function gameContent() {
         typing(allText_1[page - 1], 100, 880, 30, 0, 0, 0, 0, 0, 10);
         if (currentText == allText_1[page - 1]) {
             if (mouseIsPressed || keyIsPressed && key == ' ') {
-                if (page == 1 && fiveSecond_run && !startVideo_run) {
+                if (page == 1) {
+                // if (page == 1 && fiveSecond_run && !startVideo_run) {
                     page++;
                 }
-                else if (page == 2 && fiveSecond_hand && !startVideo_hand) {
+                else if (page == 2) {
+                // else if (page == 2 && fiveSecond_hand && !startVideo_hand) {
                     fadeStatus = "outNotJump";
                     if (sound.open.isLoaded()) {
                         sound.open.play();
