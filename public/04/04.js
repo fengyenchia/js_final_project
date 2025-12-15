@@ -40,11 +40,11 @@ function draw() {
     background(100);
 
 
-    if (fadeStatus == "none") {
-        if (sound.open.isLoaded() && soundTrigger == false) {
+    if (fadeStatus === "none") {
+        if (sound.open.isLoaded() && soundTrigger === false) {
             sound.open.play();
         }
-        if (sound.light.isLoaded() && soundTrigger == false) {
+        if (sound.light.isLoaded() && soundTrigger === false) {
             sound.light.play();
             soundTrigger = true;
         }
@@ -77,7 +77,7 @@ let soundTrigger = false;
 let soundTrigger_2 = false;
 
 function gameContent() {
-    if (page == 1) {
+    if (page === 1) {
         // imageMode(CENTER);
         // image(img.bg1, width / 2, height / 2, 1024 * 1.41, 1024 * 1.41);
 
@@ -115,7 +115,7 @@ function gameContent() {
         text('>>點擊或按空白鍵繼續', 1360, 940);
     }
 
-    else if (page == 2) {
+    else if (page === 2) {
         imageMode(CENTER);
         image(img.bg2, width / 2, height / 2, 1024 * 1.41, 1024 * 1.41);
         if (!startVideo_2 && !fiveSecond_2) {
@@ -236,26 +236,26 @@ function gameContent() {
         typing(allText[page - 1], 100, 880, 30, 0, 0, 0, 0, 0, 10);
     }
 
-    if (currentText == allText[page - 1]) {
-        if (mouseIsPressed && page != 3 || (keyIsPressed && key == ' ') && page != 3) {
+    if (currentText === allText[page - 1]) {
+        if (mouseIsPressed && page != 3 || (keyIsPressed && key === ' ') && page != 3) {
             page++;
             currentText = "";
             i = 0;
         }
-        else if (mouseIsPressed && page == 3 || (keyIsPressed && key == ' ') && page == 3) {
-            if (sound.computer.isLoaded() && soundTrigger_2 == false) {
+        else if (mouseIsPressed && page === 3 || (keyIsPressed && key === ' ') && page === 3) {
+            if (sound.computer.isLoaded() && soundTrigger_2 === false) {
                 sound.computer.play();
                 soundTrigger_2 = true;
             }
         }
     }
-    if (page == 4) {
+    if (page === 4) {
         if (frameCount - wait5second > 150) {
             page = 5;
         }
     }
 
-    if (fadeStatus == "none" && page > 5) {
+    if (fadeStatus === "none" && page > 5) {
         fadeStatus = "out";
     }
 }

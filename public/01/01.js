@@ -51,7 +51,7 @@ function setup() {
 function draw() {
     background(100);
 
-    if (fadeStatus == "none") {
+    if (fadeStatus === "none") {
         gameContent();
     }
 
@@ -61,7 +61,7 @@ function draw() {
 // -----------------------------------------
 // 將遊戲內容放在gameContent()裡
 function gameContent() {
-    if (addCoffee == 0 && !(keyIsPressed && key == ' ')) {
+    if (addCoffee === 0 && !(keyIsPressed && key === ' ')) {
         imageMode(CENTER);
         image(img.coffee, width / 2, height / 2, 1440, 1024);
 
@@ -72,11 +72,11 @@ function gameContent() {
         image(img.paper, width / 2, height / 2);
     }
 
-    if (keyIsPressed && key == ' ') {
+    if (keyIsPressed && key === ' ') {
         imageMode(CENTER);
         image(img.coffee, width / 2, height / 2, 1440, 1024);
 
-        if (!startVideo && fadeStatus == "none" && addCoffee < 5) {
+        if (!startVideo && fadeStatus === "none" && addCoffee < 5) {
             video.coffee.time(0);
             video.coffee.loop();
             startVideo = true;
@@ -128,7 +128,7 @@ function gameContent() {
             completeAddCoffee = true;
         }
     }
-    if (addCoffee == -1 && completeAddCoffee) {
+    if (addCoffee === -1 && completeAddCoffee) {
         let posX_check = lerp(210, -10, posMoveLeft);
         let posX_order = lerp(0, -220, posMoveLeft);
         posMoveLeft += moveLeftSpeed;
@@ -158,13 +158,13 @@ function gameContent() {
         }
 
         if (receivePaper) {
-            if (paper == 1) {
+            if (paper === 1) {
                 image(img.message_1, width / 3 - 5, height / 2.4);
             }
-            else if (paper == 2) {
+            else if (paper === 2) {
                 image(img.message_2, width / 3 - 80, height / 2.4);
             }
-            else if (paper == 3) {
+            else if (paper === 3) {
                 image(img.message_3, width / 3 - 55, height / 2.4);
             }
             if (frameCount-messageTime > 180) {
@@ -173,7 +173,7 @@ function gameContent() {
         }
     }
 
-    if (fadeStatus == "none" && paper == -1) {
+    if (fadeStatus === "none" && paper === -1) {
         fadeStatus = "out";
     }
 }

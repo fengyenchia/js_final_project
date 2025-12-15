@@ -21,7 +21,7 @@ function setup() {
 
 function draw() {
 
-    if (fadeStatus == "none") {
+    if (fadeStatus === "none") {
         gameContent();
     }
 
@@ -54,7 +54,7 @@ function gameContent() {
         image(img.btn, width / 2, height / 1.14);
     }
 
-    if (mouseIsPressed && fadeStatus == "none") {
+    if (mouseIsPressed && fadeStatus === "none") {
         if( mouseX > width / 2 - 365/2 && mouseX < width / 2 + 365/2 && mouseY > height / 1.14 - 151/2 && mouseY < height / 1.14 + 151/2 ){
             fadeStatus = "out";
         }

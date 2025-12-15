@@ -27,8 +27,8 @@ function setup() {
 function draw() {
     background(100);
 
-    if (fadeStatus == "none") {
-        if (sound.bath.isLoaded() && soundTrigger == false) {
+    if (fadeStatus === "none") {
+        if (sound.bath.isLoaded() && soundTrigger === false) {
             sound.bath.play();
             soundTrigger = true;
         }
@@ -69,7 +69,7 @@ function gameContent() {
         }
     }
     if(fiveSecond && !startVideo){
-        if (page == 1) {
+        if (page === 1) {
             imageMode(CENTER);
             image(img.bg, width / 2, height / 2, 1024 * 1.41, 1024 * 1.41);
             imageMode(CENTER);
@@ -85,7 +85,7 @@ function gameContent() {
             fill(255);
             text('>>點擊或按空白鍵繼續', 1360, 940);
         }
-        else if (page == 2) {
+        else if (page === 2) {
             imageMode(CENTER);
     
             image(img.bg, width / 2, height / 2, 1024 * 1.41, 1024 * 1.41);
@@ -102,17 +102,17 @@ function gameContent() {
             fill(255);
             text('>>點擊或按空白鍵繼續', 1360, 940);
         }
-        else if (page == 3) {
+        else if (page === 3) {
             imageMode(CENTER);
             image(img.phone_1, width / 2, height / 2, 1024 * 1.41, 1024 * 1.41);
 
         }
-        else if (page == 4) {
+        else if (page === 4) {
             imageMode(CENTER);
             image(img.phone_2, width / 2, height / 2, 1024 * 1.41, 1024 * 1.41);
 
         }
-        else if (page == 5) {
+        else if (page === 5) {
             imageMode(CENTER);
             image(img.phone_3, width / 2, height / 2, 1024 * 1.41, 1024 * 1.41);
     
@@ -130,8 +130,8 @@ function gameContent() {
         }
     
         typing(allText[page - 1], 100, 880, 30, 0, 0, 0, 0, 0, 10);
-        if (currentText == allText[page - 1]) {
-            if (mouseIsPressed || keyIsPressed && key == ' ') {
+        if (currentText === allText[page - 1]) {
+            if (mouseIsPressed || keyIsPressed && key === ' ') {
                 page++;
                 currentText = "";
                 i = 0;
@@ -140,7 +140,7 @@ function gameContent() {
     }
 
 
-    if (fadeStatus == "none" && page > 5) {
+    if (fadeStatus === "none" && page > 5) {
         fadeStatus = "out";
     }
 }

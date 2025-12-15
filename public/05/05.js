@@ -51,7 +51,7 @@ function setup() {
 
 function draw() {
     background(100);
-    if (fadeStatus == "none") {
+    if (fadeStatus === "none") {
         gameContent();
     }
     // 保持你原本的場景轉場方式
@@ -149,7 +149,7 @@ function gameContent() {
         if (receivePaper) {
             // --------- Step 0：顯示紙條內容（message_1）---------
             if (messageStep === 0) {
-                if (paper == 1 || paper == 2 || paper == 3) {
+                if (paper === 1 || paper === 2 || paper === 3) {
                     imageMode(CENTER);
                     image(img.message_1, 661, 459);
                 }
@@ -195,7 +195,7 @@ function gameContent() {
                     if (fadeStatus === "none") {
                         option = 1; // 若你有在別關使用 option，就保留
                         localStorage.setItem('option', option);
-                        fadeStatus = "out";  // ✅ 觸發轉場，利用 fadeInOut("/06") 跳第六關
+                        fadeStatus = "out";  // 觸發轉場，利用 fadeInOut("/06") 跳第六關
                     }
                 }
 
@@ -206,7 +206,7 @@ function gameContent() {
                     if (fadeStatus === "none") {
                         option = 2;
                         localStorage.setItem('option', option);
-                        fadeStatus = "out";  // ✅ 同樣跳第六關
+                        fadeStatus = "out";  // 同樣跳第六關
                     }
                 }
             }

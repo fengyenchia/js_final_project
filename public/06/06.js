@@ -35,12 +35,12 @@ function setup() {
 function draw() {
     background(100);
 
-    if (fadeStatus == "none") {
-        if (sound.foot.isLoaded() && soundTrigger == false && page == 1) {
+    if (fadeStatus === "none") {
+        if (sound.foot.isLoaded() && soundTrigger === false && page === 1) {
             sound.foot.play();
             soundTrigger = true;
         }
-        else if (page == 2) {
+        else if (page === 2) {
             sound.foot.pause();
         }
         gameContent();
@@ -66,7 +66,7 @@ let soundTrigger = false;
 // -----------------------------------------
 // 將遊戲內容放在gameContent()裡
 function gameContent() {
-    if (page == 1 && stage == 1) {
+    if (page === 1 && stage === 1) {
         imageMode(CENTER);
         image(img.bg_1, width / 2, height / 2, 1024 * 1.41, 1024 * 1.41);
 
@@ -85,7 +85,7 @@ function gameContent() {
         text('>>點擊或按空白鍵繼續', 1360, 940);
         console.log(page, stage);
     }
-    else if (page == 2 && stage == 1) {
+    else if (page === 2 && stage === 1) {
         imageMode(CENTER);
         image(img.bg_2, width / 2, height / 2, 1024 * 1.41, 1024 * 1.41);
 
@@ -106,7 +106,7 @@ function gameContent() {
         console.log(page, stage);
     }
 
-    if (page == 1 && stage == 2) {
+    if (page === 1 && stage === 2) {
         imageMode(CENTER);
         image(img.bg_4, width / 2, height / 2, 1024 * 1.41, 1024 * 1.41);
 
@@ -125,7 +125,7 @@ function gameContent() {
         text('>>按空白鍵繼續', 1360, 940);
         console.log(page, stage);
     }
-    else if (page == 2 && stage == 2 && option == 0) {
+    else if (page === 2 && stage === 2 && option === 0) {
         imageMode(CENTER);
         image(img.bg_4, width / 2, height / 2, 1024 * 1.41, 1024 * 1.41);
 
@@ -133,14 +133,14 @@ function gameContent() {
         image(img.option_2, width / 2, height - 150);
 
         if (mouseIsPressed && mouseX >= width / 2 - 519 && mouseX <= width / 2 + 519 && mouseY >= height - 330 - 85 && mouseY <= height - 330 + 85) {
-            if (fadeStatus == "none") {
+            if (fadeStatus === "none") {
                 option = 1;
                 localStorage.setItem('option', option); // 儲存變數到 localStorage
                 fadeStatus = "out";
             }
         }
         if (mouseIsPressed && mouseX >= width / 2 - 519 && mouseX <= width / 2 + 519 && mouseY >= height - 150 - 85 && mouseY <= height - 150 + 85) {
-            if (fadeStatus == "none") {
+            if (fadeStatus === "none") {
                 option = 2
                 localStorage.setItem('option', option); // 儲存變數到 localStorage
                 fadeStatus = "out";
@@ -151,16 +151,16 @@ function gameContent() {
 
     // -----------------------------------------
 
-    if (stage == 1) {
+    if (stage === 1) {
         typing(allText_1[page - 1], 100, 880, 30, 0, 0, 0, 0, 0, 10);
-        if (currentText == allText_1[page - 1]) {
-            if (mouseIsPressed || keyIsPressed && key == ' ') {
-                if (page == 1) {
-                // if (page == 1 && fiveSecond_run && !startVideo_run) {
+        if (currentText === allText_1[page - 1]) {
+            if (mouseIsPressed || keyIsPressed && key === ' ') {
+                if (page === 1) {
+                // if (page === 1 && fiveSecond_run && !startVideo_run) {
                     page++;
                 }
-                else if (page == 2) {
-                // else if (page == 2 && fiveSecond_hand && !startVideo_hand) {
+                else if (page === 2) {
+                // else if (page === 2 && fiveSecond_hand && !startVideo_hand) {
                     fadeStatus = "outNotJump";
                     if (sound.open.isLoaded()) {
                         sound.open.play();
@@ -179,15 +179,15 @@ function gameContent() {
             }
         }
     }
-    else if (stage == 2) {
+    else if (stage === 2) {
         typing(allText_2[page - 1], 100, 880, 30, 0, 0, 0, 0, 0, 10);
-        if (currentText == allText_2[page - 1]) {
-            if (page == 1 && (mouseIsPressed || keyIsPressed && key == ' ')) {
+        if (currentText === allText_2[page - 1]) {
+            if (page === 1 && (mouseIsPressed || keyIsPressed && key === ' ')) {
                 page = 2;
                 currentText = "";
                 i = 0;
             }
-            else if (page == 2 && (mouseIsPressed || keyIsPressed && key == ' ')) {
+            else if (page === 2 && (mouseIsPressed || keyIsPressed && key === ' ')) {
                 if (sound.door.isLoaded()) {
                     sound.door.play();
                 }

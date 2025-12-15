@@ -41,13 +41,13 @@ function setup() {
 
 function draw() {
     background(100);
-    if (fadeStatus == "in") {
+    if (fadeStatus === "in") {
     }
-    if (fadeStatus == "none") {
-        if (sound.open.isLoaded() && soundTrigger == false) {
+    if (fadeStatus === "none") {
+        if (sound.open.isLoaded() && soundTrigger === false) {
             sound.open.play();
         }
-        if (sound.light.isLoaded() && soundTrigger == false) {
+        if (sound.light.isLoaded() && soundTrigger === false) {
             sound.light.play();
             soundTrigger = true;
         }
@@ -348,7 +348,7 @@ function mousePressed() {
 
         return; // Page 7 不需要其它點擊反應
     }
-    if (page == 8) {
+    if (page === 8) {
         sound.typing.pause();
     }
     // ================= 既有的邏輯 =================

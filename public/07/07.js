@@ -45,20 +45,20 @@ function setup() {
 function draw() {
     background(100);
 
-    if (fadeStatus == "none") {
-        if (sound.open.isLoaded() && soundTrigger == false && page == 1 && option_06 == 1) {
+    if (fadeStatus === "none") {
+        if (sound.open.isLoaded() && soundTrigger === false && page === 1 && option_06 === 1) {
             sound.open.play();
             soundTrigger = true;
         }
-        else if (page == 2) {
+        else if (page === 2) {
             sound.open.pause();
         }
 
-        if (sound.click.isLoaded() && soundTrigger == false && page == 1 && option_06 == 2) {
+        if (sound.click.isLoaded() && soundTrigger === false && page === 1 && option_06 === 2) {
             sound.click.play();
             soundTrigger = true;
         }
-        else if (page == 2) {
+        else if (page === 2) {
             sound.click.pause();
         }
         gameContent();
@@ -84,12 +84,12 @@ let soundTrigger = false;
 // -----------------------------------------
 // 將遊戲內容放在gameContent()裡
 function gameContent() {
-    if (page == 1) {
+    if (page === 1) {
         if (option_06 == 1) {
             imageMode(CENTER);
             image(img.A_1, width / 2, height / 2, 1024 * 1.41, 1024 * 1.41);
         }
-        else if (option_06 == 2) {
+        else if (option_06 === 2) {
             if (!startVideo_b_1 && !fiveSecond_b_1) {
                 video.final_b_1.time(0);
                 video.final_b_1.loop();
@@ -124,11 +124,11 @@ function gameContent() {
         fill(255);
         text('>>點擊或按空白鍵繼續', 1360, 940);
     }
-    else if (page == 2) {
+    else if (page === 2) {
         imageMode(CENTER);
         image(img.A_2, width / 2, height / 2, 1024 * 1.41, 1024 * 1.41);
 
-        if (option_06 == 1) {
+        if (option_06 === 1) {
             if (!startVideo_a && !fiveSecond_a) {
                 video.final_a.time(0);
                 video.final_a.play();
@@ -148,7 +148,7 @@ function gameContent() {
                 }
             }
         }
-        else if (option_06 == 2) {
+        else if (option_06 === 2) {
             if (!startVideo_b_2 && !fiveSecond_b_2) {
                 video.final_b_2.time(0);
                 video.final_b_2.play();
@@ -176,10 +176,10 @@ function gameContent() {
         textSize(32);
         fill(255);
 
-        if (option_06 == 1) {
+        if (option_06 === 1) {
             text('陌生人', 100, 820);
         }
-        else if (option_06 == 2) {
+        else if (option_06 === 2) {
             text('咖啡廳同事', 100, 820);
         }
         textAlign(RIGHT);
@@ -188,10 +188,10 @@ function gameContent() {
         text('>>點擊或按空白鍵繼續', 1360, 940);
     }
 
-    if (option_06 == 1) {
+    if (option_06 === 1) {
         typing(allText_1[page - 1], 100, 880, 30, 0, 0, 0, 0, 0, 10);
-        if (currentText == allText_1[page - 1]) {
-            if (mouseIsPressed || keyIsPressed && key == ' ') {
+        if (currentText === allText_1[page - 1]) {
+            if (mouseIsPressed || keyIsPressed && key === ' ') {
                 page++;
                 currentText = "";
                 i = 0;
@@ -201,18 +201,18 @@ function gameContent() {
             }
         }
     }
-    else if (option_06 == 2) {
+    else if (option_06 === 2) {
         typing(allText_2[page - 1], 100, 880, 30, 0, 0, 0, 0, 0, 10);
-        if (currentText == allText_2[page - 1]) {
-            if (mouseIsPressed || keyIsPressed && key == ' ') {
+        if (currentText === allText_2[page - 1]) {
+            if (mouseIsPressed || keyIsPressed && key === ' ') {
                 currentText = "";
                 i = 0;
-                if (page == 1 && fiveSecond_b_1 && !startVideo_b_1) {
+                if (page === 1 && fiveSecond_b_1 && !startVideo_b_1) {
                     if (sound.closet.isLoaded()) {
                         sound.closet.play();
                     }
                 }
-                else if (page == 2) {
+                else if (page === 2) {
                     fadeStatus = "out";
                 }
                 page++;
