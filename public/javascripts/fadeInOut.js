@@ -3,6 +3,7 @@ let fadeSpeed = 0.01;
 let fadeStatus = "in";
 let to = "";
 
+// 本機執行註解掉下面這句
 const BASE_PATH = "/js_final_project/public";
 
 function fadeInOut(to) {
@@ -36,5 +37,8 @@ function fadeInOut(to) {
 
     if (fadeStatus === "jump") {
         window.location.href = BASE_PATH+to;
+
+        // 本機執行用下面這句
+        // window.location.href = to;
     }
 }
