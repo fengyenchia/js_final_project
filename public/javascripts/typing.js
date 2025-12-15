@@ -11,8 +11,8 @@ function typing(typingText, textX, textY, mytextSize, baseLinePosX, baseLinePosY
     startAutoEnterText = true;
 
 
-    if (startAutoEnterText == true) {
-        if (i <= typingText.length && frameCount % speed == 0) { // 每隔 speed 幀執行一次
+    if (startAutoEnterText === true) {
+        if (i <= typingText.length && frameCount % speed === 0) { // 每隔 speed 幀執行一次
             currentText = typingText.substring(0, i);
             i++;
         }

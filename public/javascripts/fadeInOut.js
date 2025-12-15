@@ -3,23 +3,25 @@ let fadeSpeed = 0.01;
 let fadeStatus = "in";
 let to = "";
 
+const BASE_PATH = "/js_final_project/public";
+
 function fadeInOut(to) {
     let alpha = map(fadeCount, 0, 1, 0, 255);
 
-    if (fadeStatus == "in") {
+    if (fadeStatus === "in") {
         fadeCount -= fadeSpeed;
         if (fadeCount <= 0) {
             fadeCount = 0;
             fadeStatus = "none"; // fade-in 完成
         }
     }
-    else if (fadeStatus == "out") {
+    else if (fadeStatus === "out") {
         fadeCount += fadeSpeed;
         if (fadeCount >= 1) {
             fadeStatus = "jump"; // fade-out 完成，跳下一章
         }
     }
-    else if (fadeStatus == "outNotJump") {
+    else if (fadeStatus === "outNotJump") {
         fadeCount += fadeSpeed;
         if (fadeCount >= 1) {
             fadeStatus = "in";
@@ -32,7 +34,7 @@ function fadeInOut(to) {
         rect(0, 0, width, height);
     }
 
-    if (fadeStatus == "jump") {
-        window.location.href = to;
+    if (fadeStatus === "jump") {
+        window.location.href = BASE_PATH+to;
     }
 }
